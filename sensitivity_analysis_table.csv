@@ -1,0 +1,9 @@
+Sharing-rate scenario,Outcome,Dynamic median [IQR],Fixed median [IQR],BM,p,P(Fixed > Dynamic)
+low,Incidence,5.0 [3.00],8.0 [4.00],-8.05,<0.001,0.769
+low,Prevalence,532.5 [25.25],545.0 [23.00],-6.05,<0.001,0.717
+low,Cumulative Treatment,508.0 [24.00],514.0 [21.25],-1.84,0.068,0.575
+low,Cures,455.0 [23.25],459.0 [22.25],-1.38,0.169,0.556
+high,Incidence,8.0 [4.00],11.0 [4.00],-7.8,<0.001,0.761
+high,Prevalence,550.5 [23.50],570.0 [24.25],-12.4,<0.001,0.838
+high,Cumulative Treatment,512.0 [22.25],520.0 [24.25],-2.21,0.029,0.59
+high,Cures,457.5 [20.25],465.0 [28.00],-2.06,0.041,0.584
