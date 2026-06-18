@@ -1,3 +1,4 @@
+;; global parameters
 globals[
   day
   week
@@ -33,7 +34,7 @@ breed [pwids pwid]
 
 
 
-
+;; variables and parameters belonging to the syringe-sharers in the model
 pwids-own [
   susceptible?
   chronic?
@@ -106,7 +107,7 @@ end
 
 
 
-
+;; daily injections are randomly samples from a truncated poison distribution
 to-report daily-sampled-injections
   let d random-poisson (injections-per-month / 28)
   if d > 5 [ set d 5 ]
@@ -192,7 +193,7 @@ end
 
 
 
-
+;; the agents belong to at least one of the outer, inner or core groups
 to setup-groups
   ;; Only select from syringe sharers
   let eligible-sharers pwids with [syringe-sharer?]
@@ -380,7 +381,7 @@ end
 
 
 
-
+;;this is used by the dynamic model only for random proximity based interaction
 to do-proximity-interactions
   let core-sharers  pwids with [syringe-sharer? and label = "core"]
   let inner-sharers pwids with [syringe-sharer? and label = "inner"]
@@ -466,7 +467,7 @@ end
 
 
 
-
+;;to conduct the sensitivity of the model result to sharing rates
 to set-sharing-rates
 
   if sharing-rate-sensitivity-level = "low" [
@@ -497,7 +498,7 @@ end
 
 
 
-
+;;Risk factor based on whether proximity based model or fixed partnership
 to calculate-risk-factor
   if not syringe-sharer? [
     set R_it 0
@@ -597,7 +598,7 @@ end
 
 
 
-
+;; transmission
 to check-infection-status
   ;; Daily application
   if not syringe-sharer? [ stop ]
@@ -664,7 +665,7 @@ end
 
 
 
-
+;; treatment initiation
 to start-treatment
   if (chronic? or resistant?) and (not on-going-treatment?) [
 
@@ -721,17 +722,7 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+;; treatment outcomes
 to cure-or-resist
   if on-going-treatment? [
     set treatment-days treatment-days + 1
@@ -830,12 +821,7 @@ end
 
 
 
-
-
-
-
-
-
+;; Model outcomes
 to record-annual-data
   let current-year year
 
